@@ -1,6 +1,8 @@
 import axios from 'axios';
 import render from './render';
 
+const Version = '2.1';
+
 let request = null;
 
 export function connect(domain) {
@@ -8,6 +10,18 @@ export function connect(domain) {
         baseURL: domain,
         timeout: 11000
     });
+
+    request.interceptors.response.use(
+        response => {
+            const data = response.data;
+            checkVersion(data);
+            return data;
+        },
+        error => {
+            return Promise.reject(error);
+        }
+    );
+
     return load();
 }
 
@@ -15,10 +29,28 @@ export function load() {
     return request.get('/entity');
 }
 
+export function getDB() {
+    return request.get('/entity/table');
+}
+
 export function save(project) {
     return request.post('/entity', {
         project: JSON.stringify(project)
     });
+}
+
+function checkVersion(data) {
+    if (data.version) {
+        const php = data.version.split('.');
+        const require = Version.split('.');
+        if (php[0] === require[0]) {
+            if (php[0] - require[0] >= 0) {
+                return;
+            }
+        }
+    }
+
+    throw new Error(`Version does not match!\nPHP package version: ${data.version}\nRequired version: ${Version}`);
 }
 
 function deploy(data) {

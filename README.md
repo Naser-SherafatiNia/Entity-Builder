@@ -11,6 +11,7 @@
 - Zip and download PHP code
 - Deploy PHP code online
 - Customize PHP templates
+- Load from database schema
 - Design table fields and indexes
 - Define model factories
 - Manage model relations
@@ -44,11 +45,6 @@ npm run serve
 npm run build
 ```
 
-### Run your tests
-```
-npm run test
-```
-
 ### Lints and fixes files
 ```
 npm run lint
@@ -58,8 +54,6 @@ npm run lint
 ## Deploy PHP code online
 
 If you want to deploy PHP code online, then use this [package](https://github.com/GooGee/Entity)
-
-Notice: Make sure you have enabled the CORS in you server, otherwise it won't work.
 
 
 ## Template Document

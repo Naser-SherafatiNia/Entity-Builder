@@ -30,7 +30,7 @@
                 </td>
                 <td>
                     <div class="btn-group">
-                        <span v-for="file in entity.FileManager.list" @click="deploy(file)" :key="file.fileTypeName" class="btn btn-default btn-sm">
+                        <span v-for="file in entity.FileManager.list" @click="deploy(file, entity)" :key="file.fileTypeName" class="btn btn-default btn-sm">
                             {{ file.fileTypeName }}
                         </span>
                     </div>
@@ -95,9 +95,9 @@
                     }
                 });
             },
-            deploy(file) {
+            deploy(file, entity) {
                 if (bus.php) {
-                    deployFile(bus.project, bus.entity, file)
+                    deployFile(bus.project, entity, file)
                         .then(response => {
                             see(response.data.message, 200);
                         })

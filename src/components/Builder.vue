@@ -20,11 +20,11 @@
 </template>
 
 <script>
-    import { loadProject, makeProject } from '../helper/entity';
-    import { see, enter } from '../helper/dialogue';
+    import { addUser, loadProject, makeProject } from '../helper/entity';
+    import { see, sure, enter } from '../helper/dialogue';
     import bus from '../helper/event';
     import { read } from '../helper/net';
-    import { connect, save } from '../helper/request';
+    import { connect, getDB, save } from '../helper/request';
     import { download } from '../helper/zip';
     import Project from './Project';
 
@@ -44,14 +44,29 @@
                             .then(response => {
                                 try {
                                     // console.log(response)
-                                    if (response.data.data) {
-                                        const json = JSON.parse(response.data.data);
+                                    bus.php = true;
+                                    if (bus.project) {
+                                        return;
+                                    }
+                                    if (response.data) {
+                                        const json = JSON.parse(response.data);
                                         bus.project = loadProject(json);
                                         if (bus.project.EntityManager.list.length > 0) {
                                             bus.show(bus.project.EntityManager.list[0]);
                                         }
+                                    } else {
+                                        if (bus.project == null) {
+                                            sure('Do you want to load tables from your database schema?')
+                                                .then(result => {
+                                                    if (result.value) {
+                                                        this.convert();
+                                                    }
+                                                })
+                                                .catch(error => {
+                                                    console.log(error);
+                                                });
+                                        }
                                     }
-                                    bus.php = true;
                                 } catch (error) {
                                     see(error, 400);
                                 }
@@ -62,6 +77,21 @@
                     }
                 });
             },
+            convert() {
+                getDB()
+                    .then(response => {
+                        if (response.data) {
+                            bus.project = makeProject('entity');
+                            bus.project.convertDB(response.data);
+                            if (bus.project.EntityManager.list.length > 0) {
+                                bus.show(bus.project.EntityManager.list[0]);
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        see(error.message, 400);
+                    });
+            },
             save() {
                 if (bus.project == null) {
                     return;
@@ -69,7 +99,7 @@
 
                 save(bus.project)
                     .then(response => {
-                        see(response.data.message, 200);
+                        see(response.message, 200);
                     })
                     .catch(error => {
                         see(error.message, 400);
@@ -115,7 +145,8 @@
                     if (result.value) {
                         try {
                             bus.project = makeProject(result.value);
-                            bus.show(bus.project.EntityManager.list[0]);
+                            const user = addUser(bus.project);
+                            bus.show(user);
                         } catch (error) {
                             see(error, 400);
                         }
