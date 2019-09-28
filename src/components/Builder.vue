@@ -159,7 +159,7 @@
                 }
 
                 try {
-                    save(bus.project);
+                    download(bus.project);
                 } catch (error) {
                     see(error, 400);
                 }

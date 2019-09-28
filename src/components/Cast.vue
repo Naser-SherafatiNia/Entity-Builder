@@ -6,6 +6,7 @@
         <thead>
             <tr>
                 <th width="120px">Field</th>
+                <th width="120px">Type</th>
                 <th width="66px">Fillable</th>
                 <th width="66px">Hidden</th>
                 <th>Cast</th>
@@ -14,6 +15,7 @@
         <tbody>
             <tr v-for="field in manager.list" :key="field.name">
                 <td>{{ field.name }}</td>
+                <td>{{ field.type }}</td>
                 <td><input v-model="field.fillable" class="checkbox" type="checkbox" /></td>
                 <td><input v-model="field.hidden" class="checkbox" type="checkbox" /></td>
                 <td>

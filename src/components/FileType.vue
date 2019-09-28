@@ -5,7 +5,7 @@
                 <table class="table table-striped">
                     <caption class="title">
                         <h1>{{ file.name }}</h1>
-                        <span @click="remove(file)" class="btn btn-danger"> X </span>
+                        <span v-if="!file.original" @click="remove(file)" class="btn btn-danger"> X </span>
                     </caption>
                     <thead>
                         <tr>

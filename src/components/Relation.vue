@@ -23,10 +23,10 @@
             <span v-if="relation.type == 'belongsToMany'" @click="setPivot" class="btn btn-default">{{ plus(relation.pivot) }}</span>
         </td>
         <td>
-            <span @click="setKey('foreignKey')" class="btn btn-default">{{ plus(relation.foreignKey) }}</span>
+            <span v-if="hasForeignKey" @click="setForeignKey" class="btn btn-default">{{ plus(relation.foreignKey) }}</span>
         </td>
         <td>
-            <span @click="setKey('localKey')" class="btn btn-default">{{ plus(relation.localKey) }}</span>
+            <span v-if="hasLocalKey" @click="setLocalKey" class="btn btn-default">{{ plus(relation.localKey) }}</span>
         </td>
     </tr>
 </template>
@@ -44,8 +44,14 @@
                 bus
             };
         },
-        created() {},
-        computed: {},
+        computed: {
+            hasForeignKey() {
+                return this.relation.type != 'belongsTo';
+            },
+            hasLocalKey() {
+                return this.relation.type == 'belongsTo' || this.relation.type == 'belongsToMany';
+            }
+        },
         methods: {
             plus(key) {
                 if (key) {
@@ -77,11 +83,33 @@
                     }
                 });
             },
-            setKey(key) {
-                let entity = bus.entity;
-                if (key === 'foreignKey') {
-                    entity = bus.project.EntityManager.find(this.relation.model);
+            setForeignKey() {
+                const key = 'foreignKey';
+                if (this.relation.type == 'belongsToMany') {
+                    this.setKeyInPivot(key);
+                    return;
                 }
+                const entity = bus.project.EntityManager.findByModel(this.relation.model);
+                this.setKey(key, entity);
+            },
+            setLocalKey() {
+                const key = 'localKey';
+                if (this.relation.type == 'belongsToMany') {
+                    this.setKeyInPivot(key);
+                    return;
+                }
+                const entity = bus.entity;
+                this.setKey(key, entity);
+            },
+            setKeyInPivot(key) {
+                if (this.relation.pivot) {
+                    const entity = bus.project.EntityManager.findByTable(this.relation.pivot);
+                    this.setKey(key, entity);
+                    return;
+                }
+                see('Select a pivot table first!');
+            },
+            setKey(key, entity) {
                 const item = {
                     name: ''
                 };

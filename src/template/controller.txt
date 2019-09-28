@@ -17,8 +17,8 @@ class {{ file.name }} extends Controller
      */
     public function index()
     {
-        $list = {{ model.name }}::query()->paginate();
-        return view("$this->viewPath.index", compact('list'));
+        $page = {{ model.name }}::query()->paginate();
+        return view("$this->viewPath.index", compact('page'));
     }
 
     /**

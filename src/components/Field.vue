@@ -47,8 +47,8 @@
         <tfoot>
             <tr>
                 <td>
-                    <select @change="addType($event.target.value)" class="form-control">
-                        <option selected="true" disabled="disabled">...</option>
+                    <select v-model="selected" @change="addType($event.target.value)" class="form-control">
+                        <option selected="true" disabled="disabled" value="">...</option>
                         <option v-for="name in CommonTypeList" :key="name">{{ name }}</option>
                     </select>
                 </td>
@@ -95,7 +95,8 @@
                 EntityList: bus.project.EntityManager.list,
                 CommonFieldList,
                 CommonTypeList,
-                IntegerFieldList
+                IntegerFieldList,
+                selected: ''
             };
         },
         methods: {
@@ -133,6 +134,7 @@
                     const field = this.manager.cloneType(type);
                     this.manager.add(field);
                     this.rename(field);
+                    this.selected = '';
                 } catch (error) {
                     see(error, 400);
                 }

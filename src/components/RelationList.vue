@@ -10,8 +10,8 @@
                 <th>Model</th>
                 <th>Method Name</th>
                 <th>Pivot Table</th>
-                <th>Foreign Key</th>
-                <th>Local Key</th>
+                <th>Foreign Field</th>
+                <th>Local Field</th>
             </tr>
         </thead>
         <tbody>

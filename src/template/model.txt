@@ -11,6 +11,11 @@ class User extends Authenticatable
 {% else %}
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * class {{ model.name }}
+ * {% for field in entity.FieldManager.list %}
+ * @property {{ field.phpType }} ${{ field.name }}{% endfor %}
+ */
 class {{ model.name }} extends Model
 {
 {% endif %}
@@ -67,7 +72,7 @@ class {{ model.name }} extends Model
      */
     public $timestamps = {{ entity.FieldManager.hasCreateAndUpdateTimeStamp }};
 
-{% for relation in model.RelationManager.list %}
+{% for relation in entity.RelationManager.list %}
     public function {{ relation.name }}()
     {
         return {{ relation.text }};

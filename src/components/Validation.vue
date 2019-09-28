@@ -6,6 +6,7 @@
         <thead>
             <tr>
                 <th width="120px">Field</th>
+                <th width="120px">Type</th>
                 <th>Rule</th>
             </tr>
         </thead>
@@ -14,6 +15,7 @@
                 <td>
                     <label> <input v-model="field.included" type="checkbox" /> {{ field.name }} </label>
                 </td>
+                <td>{{ field.type }}</td>
                 <td>
                     <RuleTab :manager="field.RuleManager"></RuleTab>
                 </td>
