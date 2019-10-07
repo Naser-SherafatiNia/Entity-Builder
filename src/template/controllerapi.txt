@@ -4,6 +4,7 @@ namespace {{ project.NameSpace }}\{{ file.FileType.NameSpace }};
 
 use {{ project.NameSpace }}\{{ request.FileType.NameSpace }}\{{ request.name }};
 use {{ project.NameSpace }}\{{ model.FileType.NameSpace }}\{{ model.name }};
+use {{ project.NameSpace }}\Http\Controllers\Controller;
 
 class {{ file.name }} extends Controller
 {

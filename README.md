@@ -16,16 +16,16 @@
 - Define model factories
 - Manage model relations
 - Set field validation rules
-- Generat Controller
-- Generat Diagram
-- Generat Factory
-- Generat Migration
-- Generat Model
-- Generat Policy
-- Generat Request
-- Generat Resource
-- Generat Seeder
-- Generat Test
+- Draw Diagram
+- Generate Controller
+- Generate Factory
+- Generate Migration
+- Generate Model
+- Generate Policy
+- Generate Request
+- Generate Resource
+- Generate Seeder
+- Generate Test
 
 ![table](https://github.com/GooGee/Entity-Builder/raw/gh-pages/table.gif)
 
@@ -64,3 +64,31 @@ If you want to deploy PHP code online, then use this [package](https://github.co
 ## Entity Document
 
 [Document](https://googee.github.io/Entity-Core/docs/)
+
+Property of [Project](https://googee.github.io/Entity-Core/docs/classes/project.html)
+
+- FileTypeManager
+  - list: Array of FileType
+    - [FileType](https://googee.github.io/Entity-Core/docs/classes/filetype.html)
+      - PropertyManager
+        - list: Array of Property
+          - [Property](https://googee.github.io/Entity-Core/docs/classes/property.html)
+
+- EntityManager
+  - list: Array of Entity
+    - [Entity](https://googee.github.io/Entity-Core/docs/classes/entity.html)
+      - FieldManager
+        - list: Array of Field
+          - [Field](https://googee.github.io/Entity-Core/docs/classes/field.html)
+
+      - IndexManager
+        - list: Array of Index
+          - [Index](https://googee.github.io/Entity-Core/docs/classes/index.html)
+
+      - RelationManager
+        - list: Array of Relation
+          - [Relation](https://googee.github.io/Entity-Core/docs/classes/relation.html)
+
+      - FileManager
+        - list: Array of File
+          - [File](https://googee.github.io/Entity-Core/docs/classes/file.html)

@@ -30,10 +30,11 @@
 </template>
 
 <script>
+    import Entity from '../helper/entity';
     import { enter } from '../helper/dialogue';
     import { LDData } from './ListDialogue';
 
-    const CastTypeList = ['', 'array', 'boolean', 'collection', 'date', 'datetime', 'decimal:8', 'double', 'float', 'integer', 'object', 'real', 'string', 'timestamp'];
+    const CastTypeList = [''].concat(Array.from(Entity.PHPTypeCastMap.keys()));
 
     export default {
         name: 'Cast',

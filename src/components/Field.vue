@@ -131,10 +131,10 @@
             },
             addType(type) {
                 try {
+                    this.selected = '';
                     const field = this.manager.cloneType(type);
                     this.manager.add(field);
                     this.rename(field);
-                    this.selected = '';
                 } catch (error) {
                     see(error, 400);
                 }

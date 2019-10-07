@@ -82,7 +82,7 @@ export const REList = [
     },
     {
         name: 'A-Z a-z 0-9',
-        text: '/^[A-Za-z][A-Za-z0-9]+$/'
+        text: '/^[A-Za-z0-9]+$/'
     },
     {
         name: 'A-Z a-z 0-9 _',

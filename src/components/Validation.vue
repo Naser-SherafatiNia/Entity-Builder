@@ -26,6 +26,7 @@
                 <td colspan="2">
                     <span v-on:click="setRule" class="btn btn-primary">Auto Set Rule</span>
                 </td>
+                <td></td>
             </tr>
         </tfoot>
     </table>
