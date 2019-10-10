@@ -28,6 +28,10 @@ function setRule(field) {
         return;
     }
 
+    if (field.isIncrement) {
+        return;
+    }
+
     add(field, 'required');
 
     if (field.type === 'boolean') {

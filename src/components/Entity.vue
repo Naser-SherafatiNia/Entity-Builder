@@ -13,7 +13,7 @@
         </thead>
         <tbody>
             <tr v-for="entity in manager.list" :key="entity.name">
-                <td>
+                <td class="button-cell">
                     <div class="btn-group">
                         <span @click="remove(entity)" class="btn btn-danger"> X </span>
                         <span @click="manager.moveUp(entity)" class="btn btn-default"> ↑ </span>

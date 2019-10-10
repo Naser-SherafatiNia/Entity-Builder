@@ -86,6 +86,9 @@
             },
             change(key, owner) {
                 enter('Please enter the ' + key, owner[key]).then(result => {
+                    if (result.value === undefined) {
+                        return;
+                    }
                     try {
                         owner[key] = result.value;
                     } catch (error) {

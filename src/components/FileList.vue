@@ -2,7 +2,7 @@
     <div>
         <div v-for="file in fileWithoutTab" :key="file.name">
             <File :file="find(file.name)" :type="file.name"></File>
-            <br /><br />
+            <hr>
         </div>
     </div>
 </template>

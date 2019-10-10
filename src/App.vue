@@ -56,6 +56,14 @@
         margin-right: 4px
     }
 
+    .button-cell:hover .btn-group {
+        display: inline-block;
+    }
+
+    .button-cell .btn-group {
+        display: none;
+    }
+
     .checkbox {
         zoom: 2;
         display: inline;
@@ -63,5 +71,7 @@
 
     .btn-primary.plus {
         width: 100%;
+        font-size: large;
+        font-weight: bold;
     }
 </style>

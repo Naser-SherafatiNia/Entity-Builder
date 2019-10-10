@@ -65,7 +65,7 @@ If you want to deploy PHP code online, then use this [package](https://github.co
 
 [Document](https://googee.github.io/Entity-Core/docs/)
 
-Property of [Project](https://googee.github.io/Entity-Core/docs/classes/project.html)
+Structure of [Project](https://googee.github.io/Entity-Core/docs/classes/project.html)
 
 - FileTypeManager
   - list: Array of FileType

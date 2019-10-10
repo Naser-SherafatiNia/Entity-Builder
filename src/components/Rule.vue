@@ -1,7 +1,7 @@
 <template>
     <span :class="{editing:editing}">
         <template v-if="editing">
-            <span @click="$emit('remove')" class="btn btn-default">- {{ rule.name }}</span>
+            <span @click="$emit('remove')" class="btn btn-default">- {{ rule.name }}</span>&nbsp;
 
             <template v-if="rule.isBoolean===false">
                 <span v-if="isRE" class="input-group">

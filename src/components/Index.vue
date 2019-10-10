@@ -12,7 +12,7 @@
         </thead>
         <tbody>
             <tr v-for="index in manager.list" :key="index.name">
-                <td>
+                <td class="button-cell">
                     <div class="btn-group">
                         <span v-on:click="remove(index)" class="btn btn-danger"> X </span>
                         <span v-on:click="manager.moveUp(index)" class="btn btn-default"> ↑ </span>

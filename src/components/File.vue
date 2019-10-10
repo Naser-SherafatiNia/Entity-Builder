@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div @mouseover="hover = true" @mouseleave="hover = false" class="title file-title">
+        <div class="title file-title button-cell">
             <h1>{{ type }}</h1>
             <template v-if="file">
-                <span v-if="hover" class="btn-group">
-                    <span v-if="hover" @click="remove" class="btn btn-danger"> X </span>
+                <span class="btn-group">
+                    <span @click="remove" class="btn btn-danger"> X </span>
                     <span @click="template" class="btn btn-primary">Template</span>
                     <span @click="preview" class="btn btn-success">Preview</span>
                 </span>
@@ -31,8 +31,7 @@
         props: ['file', 'type'],
         data() {
             return {
-                bus,
-                hover: false
+                bus
             };
         },
         methods: {

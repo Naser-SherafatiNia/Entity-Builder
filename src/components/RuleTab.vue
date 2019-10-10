@@ -7,9 +7,10 @@
         </ul>
 
         <div v-if="editing">
+            <br>
             <ul class="nav nav-tabs">
-                <li role="presentation">
-                    <a @click="editing=false" href="javascript:void(0)">OK</a>
+                <li>
+                    <span @click="editing=false" class="btn btn-primary">OK</span>&nbsp;
                 </li>
                 <li v-for="kind in KindList" :key="kind.title" role="presentation" :class="{active:kind.title==tab}">
                     <a @click="tab=kind.title" href="javascript:void(0)">{{ kind.title }}</a>

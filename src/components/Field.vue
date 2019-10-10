@@ -9,15 +9,12 @@
                 <th>Name</th>
                 <th>Type</th>
                 <th>Length / Enum</th>
-                <th>Default</th>
-                <th>Comment</th>
-                <th>Allow Null</th>
-                <th>Unsigned</th>
+                <th>Other</th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="field in manager.list" :key="field.name">
-                <td>
+                <td class="button-cell">
                     <div class="btn-group">
                         <span v-on:click="remove(field)" class="btn btn-danger"> X </span>
                         <span v-on:click="manager.moveUp(field)" class="btn btn-default"> ↑ </span>
@@ -32,16 +29,8 @@
                 </td>
                 <td><input v-if="field.hasLength" v-model="field.length" class="form-control" type="text" /></td>
                 <td>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <input type="checkbox" @click="check(field)" :checked="field.value" />
-                        </span>
-                        <input v-model="field.value" class="form-control" type="text" />
-                    </div>
+                    <FieldPanel :field="field"></FieldPanel>
                 </td>
-                <td><input v-model="field.comment" class="form-control" type="text" /></td>
-                <td><input v-model="field.allowNull" class="checkbox" type="checkbox" /></td>
-                <td><input v-model="field.unsigned" class="checkbox" type="checkbox" /></td>
             </tr>
         </tbody>
         <tfoot>
@@ -73,9 +62,6 @@
                 <td>
                     <span v-on:click="add" class="btn btn-primary plus"> + </span>
                 </td>
-                <td></td>
-                <td></td>
-                <td></td>
             </tr>
         </tfoot>
     </table>
@@ -85,11 +71,13 @@
     import bus from '../helper/event';
     import { see, sure, enter } from '../helper/dialogue';
     import { CommonFieldList, CommonTypeList, FieldTypeList, IntegerFieldList } from '../helper/field';
+    import FieldPanel from './FieldPanel';
     import { LDData } from './ListDialogue';
 
     export default {
         name: 'Field',
         props: ['manager'],
+        components: { FieldPanel },
         data() {
             return {
                 EntityList: bus.project.EntityManager.list,
@@ -161,17 +149,6 @@
                 LDData.show('Select a Type', FieldTypeList, 'type', null, result => {
                     field.type = result.type;
                 });
-            },
-            check(field) {
-                if (field.value === '') {
-                    if (field.isNumber) {
-                        field.value = '0';
-                    } else {
-                        field.value = "''";
-                    }
-                } else {
-                    field.value = '';
-                }
             }
         }
     };

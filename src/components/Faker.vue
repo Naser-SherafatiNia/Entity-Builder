@@ -29,8 +29,10 @@
 
                         <template v-if="'method' == field.seed.type">
                             <span v-on:click="setMethod(field)" class="btn btn-default">{{ field.seed.method }}</span>
+                            (
+                            <input v-model="field.seed.parameter" class="form-control" type="text" />
+                            )
                         </template>
-                        <input v-show="'method' == field.seed.type" v-model="field.seed.parameter" class="form-control" type="text" />
 
                         <template v-if="'property' == field.seed.type">
                             <span v-on:click="setProperty(field)" class="btn btn-default">{{ field.seed.property }}</span>
