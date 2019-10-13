@@ -2,7 +2,7 @@
     <div>
         <div v-for="file in bus.project.FileTypeManager.list" :key="file.name">
             <template v-if="file.name==bus.type">
-                <table class="table table-striped">
+                <table class="table">
                     <caption class="title">
                         <h1>{{ file.name }}</h1>
                         <span v-if="!file.original" @click="remove(file)" class="btn btn-danger"> X </span>
@@ -36,18 +36,6 @@
                             <td>suffix</td>
                             <td>
                                 <span @click="change('suffix', file)" class="btn btn-default">{{ plus(file.suffix) }}</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>templateName</td>
-                            <td>
-                                <span @click="change('templateName', file)" class="btn btn-default">{{ plus(file.templateName) }}</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>template</td>
-                            <td>
-                                <span @click="visible=!visible" class="btn btn-default"> * </span>
                             </td>
                         </tr>
                         <tr v-show="visible">

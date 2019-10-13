@@ -1,5 +1,5 @@
 <template>
-    <table class="table table-striped">
+    <table class="table">
         <caption>
             <h3>Index</h3>
         </caption>

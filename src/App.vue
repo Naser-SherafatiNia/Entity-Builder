@@ -39,7 +39,7 @@
 
 <style>
     .content {
-        padding-left: 120px;
+        padding-left: 130px;
     }
 
     .file-title {
@@ -53,7 +53,7 @@
     }
 
     .title .btn-group {
-        margin-right: 4px
+        margin-right: 4px;
     }
 
     .button-cell:hover .btn-group {

@@ -26,6 +26,8 @@
 - Generate Resource
 - Generate Seeder
 - Generate Test
+- Generate React Form
+- Generate Vue Form
 
 ![table](https://github.com/GooGee/Entity-Builder/raw/gh-pages/table.gif)
 

@@ -36,9 +36,13 @@
         },
         methods: {
             add() {
-                const file = bus.entity.FileManager.make(this.type);
-                bus.entity.FileManager.add(file);
-                bus.file = file;
+                try {
+                    const file = bus.entity.FileManager.make(this.type);
+                    bus.entity.FileManager.add(file);
+                    bus.file = file;
+                } catch (error) {
+                    see(error, 400);
+                }
             },
             template() {
                 let template = '';

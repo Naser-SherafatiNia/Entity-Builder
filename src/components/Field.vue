@@ -1,5 +1,5 @@
 <template>
-    <table class="table table-striped">
+    <table class="table">
         <caption>
             <h3>Field</h3>
         </caption>
@@ -9,7 +9,7 @@
                 <th>Name</th>
                 <th>Type</th>
                 <th>Length / Enum</th>
-                <th>Other</th>
+                <th>Default / Comment / Allow Null</th>
             </tr>
         </thead>
         <tbody>

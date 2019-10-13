@@ -1,0 +1,50 @@
+<template>
+    <form>
+{% for field in entity.FieldManager.includedList %}
+        <div class="form-group">
+            <label>{{ field.camelCase }}</label>
+            <input v-model="form.{{ field.name }}" class="form-control" type="text" required />
+        </div>
+{% endfor %}
+
+        <button @click="save" type="button" class="btn btn-primary">Save</button>
+    </form>
+</template>
+
+<script>
+    export default {
+        name: '{{ file.name }}',
+        props: {
+            id: {
+                type: Number,
+                required: false
+            }
+        },
+        data() {
+            return {
+                form: DefaultValue,
+                waiting: false
+            }
+        },
+        created() {
+            if (this.id) {
+                this.load()
+            }
+        },
+        methods: {
+            load() {
+                //
+            },
+            save() {
+                this.waiting = true
+            }
+        }
+    }
+
+    const DefaultValue = {
+{% for field in entity.FieldManager.includedList %}
+        {{ field.name }}: {{ field.jsValue }},
+{% endfor %}
+        ____: null
+    }
+</script>

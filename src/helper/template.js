@@ -8,6 +8,8 @@ import request from 'raw-loader!../template/request.txt';
 import resource from 'raw-loader!../template/resource.txt';
 import seeder from 'raw-loader!../template/seeder.txt';
 import test from 'raw-loader!../template/test.txt';
+import react from 'raw-loader!../template/react.txt';
+import vue from 'raw-loader!../template/vue.txt';
 
 export default {
     controller,
@@ -19,5 +21,8 @@ export default {
     request,
     resource,
     seeder,
-    test
+    test,
+    testapi: test,
+    react,
+    vue
 };

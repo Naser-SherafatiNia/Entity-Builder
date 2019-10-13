@@ -1,5 +1,5 @@
 <template>
-    <table class="table table-striped">
+    <table class="table">
         <caption>
             <h3>Entity</h3>
         </caption>
@@ -99,7 +99,7 @@
                 if (bus.php) {
                     deployFile(bus.project, entity, file)
                         .then(response => {
-                            see(response.data.message, 200);
+                            see(response.message, 200);
                         })
                         .catch(error => {
                             see(error.message, 400);
@@ -109,7 +109,7 @@
             deployGroup(entity) {
                 deployGroup(bus.project, entity)
                     .then(response => {
-                        see(response.data.message, 200);
+                        see(response.message, 200);
                     })
                     .catch(error => {
                         see(error.message, 400);
@@ -118,7 +118,7 @@
             deployAll() {
                 deployAll(bus.project)
                     .then(response => {
-                        see(response.data.message, 200);
+                        see(response.message, 200);
                     })
                     .catch(error => {
                         see(error.message, 400);
